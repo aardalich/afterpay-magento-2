@@ -264,7 +264,9 @@ class Response extends \Magento\Framework\App\Action\Action
 								$redirectUrl = $quote->getPayment()->getOrderPlaceRedirectUrl();
 								if (!$redirectUrl && $order->getCanSendNewEmailFlag()) {
 									try {
-										$this->_orderSender->send($order);
+										/* Comment out send as to fix dup email
+											$this->_orderSender->send($order);
+										*/
 									} catch (\Exception $e) {
 										$this->_helper->debug("Transaction Email Sending Error: " . json_encode($e));
 									}
